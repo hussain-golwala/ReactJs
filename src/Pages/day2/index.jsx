@@ -1,9 +1,9 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/no-named-as-default */
 import React from 'react';
-import User from '../Components/day2user';
-import Footer from '../Footer';
-import Header from '../Header';
+import User from '../../Components/day2user';
+import Footer from '../../Footer';
+import Header from '../../Header';
 
 class Day2App extends React.Component {
   constructor() {

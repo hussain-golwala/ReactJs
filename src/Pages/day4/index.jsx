@@ -1,8 +1,8 @@
 /* eslint-disable no-shadow */
 /* eslint-disable lines-between-class-members */
 import React from 'react';
-import Footer from '../Footer';
-import Header from '../Header';
+import Footer from '../../Footer';
+import Header from '../../Header';
 
 class Day4 extends React.Component {
   constructor(props) {

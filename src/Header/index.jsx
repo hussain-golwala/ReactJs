@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import '../scss/header.scss';
 
 const Header = () => (
-  <Navbar bg="primary" className="nav-color" expand="lg" variant="dark">
+  <Navbar bg="primary" expand="lg" variant="dark">
     <Container>
       {/* <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand> */}
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -40,6 +40,9 @@ const Header = () => (
           </NavLink>
           <NavLink to="/day11" className="nav-link">
             Day11
+          </NavLink>
+          <NavLink to="/day12" className="nav-link">
+            Day12
           </NavLink>
         </Nav>
       </Navbar.Collapse>

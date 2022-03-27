@@ -1,54 +1,11 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable no-alert */
-/* eslint-disable react/react-in-jsx-scope */
-import { Formik, Field, Form } from 'formik';
-// import '../../scss/day11.scss';
-// import { Form } from 'react-bootstrap';
+import React from 'react';
 import Header from '../../Header';
 
 function Day11() {
   return (
     <>
       <Header />
-      <Formik
-        initialValues={{
-          name: '', email: '', subject: '', content: '',
-        }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 1000);
-        }}
-      >
-        {({ isSubmitting }) => (
-          <Form>
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <Field name="name" className="form-control" type="text" />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="email">Email Address</label>
-              <Field name="email" className="form-control" type="email" />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="subject">Subject</label>
-              <Field name="subject" className="form-control" type="text" />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="content">Content</label>
-              <Field name="content" className="form-control" as="textarea" />
-            </div>
-            <div className="form-group">
-              <button type="submit" className="btn btn-primary" disabled={isSubmitting}>{isSubmitting ? 'Please wait...' : 'Submit'}</button>
-            </div>
-
-          </Form>
-        )}
-      </Formik>
+      <div>Day11</div>
     </>
   );
 }

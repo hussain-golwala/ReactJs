@@ -3,10 +3,10 @@
 /* eslint-disable react/no-unused-state */
 import { Button } from 'react-bootstrap';
 import React from 'react';
-import Day6User1 from '../Components/day6User1';
-import Day6User2 from '../Components/day6User2';
-import Header from '../Header';
-import Footer from '../Footer';
+import Day6User1 from '../../Components/day6User1';
+import Day6User2 from '../../Components/day6User2';
+import Header from '../../Header';
+import Footer from '../../Footer';
 
 class Day6 extends React.Component {
   constructor() {

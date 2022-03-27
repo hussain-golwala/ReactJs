@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 import React, { useState, useEffect } from 'react';
-import Footer from '../Footer';
-import Header from '../Header';
+import Footer from '../../Footer';
+import Header from '../../Header';
 
 const Day7 = () => {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -20,6 +20,7 @@ const Day7 = () => {
   }, [window.innerHeight]);
 
   return (
+
     <>
       <Header />
       <h3>
@@ -33,6 +34,7 @@ const Day7 = () => {
       </h3>
       <Footer />
     </>
+
   );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Day2App from './Pages/day2app';
+import Day2App from './Pages/day2';
 import Layout from './layout';
 import Day3 from './Pages/day3';
 import Day4 from './Pages/day4';
@@ -14,6 +14,8 @@ import Angular from './Components/day10angular';
 import Day10Child from './Components/day10child';
 import ReactJs from './Components/day10react';
 import Day11 from './Pages/day11';
+import Error from './Pages/error page';
+import Day12 from './Pages/day12';
 
 function AppRouter() {
   return (
@@ -33,6 +35,8 @@ function AppRouter() {
         <Route path=":id" element={<Day10Child />} />
       </Route>
       <Route path="/day11" element={<Day11 />} />
+      <Route path="/day12" element={<Day12 />} />
+      <Route path="*" element={<Error />} />
     </Routes>
   );
 }

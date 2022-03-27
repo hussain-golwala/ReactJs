@@ -1,14 +1,22 @@
+/* eslint-disable no-alert */
+/* eslint-disable consistent-return */
 /* eslint-disable linebreak-style */
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
-import Footer from '../Footer';
-import Header from '../Header';
+import Footer from '../../Footer';
+import Header from '../../Header';
 
 function Day8() {
   const [count, setCount] = useState(0);
-  if (count < 0) {
-    setCount('Counter not goes below zero');
-  }
+
+  const decCount = () => {
+    if (count < 0) {
+      setCount(count - 1);
+    } else {
+      setCount(0);
+      alert('Counter does not goes below zero');
+    }
+  };
 
   return (
     <>
@@ -21,7 +29,7 @@ function Day8() {
         Increase
       </Button>
       {' '}
-      <Button variant="warning" onClick={() => setCount(count - 1)}>
+      <Button variant="warning" onClick={() => decCount()}>
         Decrease
       </Button>
       {' '}

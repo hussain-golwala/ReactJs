@@ -2,9 +2,9 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/sort-comp */
 import React from 'react';
-import Day3Child from '../Components/day3Child';
-import Footer from '../Footer';
-import Header from '../Header';
+import Day3Child from '../../Components/day3Child';
+import Footer from '../../Footer';
+import Header from '../../Header';
 
 class Day3 extends React.PureComponent {
   constructor(props) {
