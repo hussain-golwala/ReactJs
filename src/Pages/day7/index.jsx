@@ -1,11 +1,12 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable react/function-component-definition */
 import React, { useState, useEffect } from 'react';
 import Footer from '../../Footer';
 import Header from '../../Header';
 
 const Day7 = () => {
-  const [windowWidth, setWindowWidth] = useState(0);
-  const [windowHeight, setWindowHeight] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(1920);
+  const [windowHeight, setWindowHeight] = useState(969);
 
   useEffect(() => {
     window.addEventListener('resize', () => {
@@ -28,7 +29,8 @@ const Day7 = () => {
         {' '}
         {windowWidth}
         {' '}
-        and Height:
+        <br />
+        Window Height:
         {' '}
         {windowHeight}
       </h3>

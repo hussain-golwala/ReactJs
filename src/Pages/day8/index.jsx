@@ -10,11 +10,11 @@ function Day8() {
   const [count, setCount] = useState(0);
 
   const decCount = () => {
-    if (count < 0) {
+    if (count > 0) {
       setCount(count - 1);
     } else {
-      setCount(0);
       alert('Counter does not goes below zero');
+      setCount(0);
     }
   };
 
