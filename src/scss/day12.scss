@@ -6,5 +6,29 @@
 
 Form{
     width: 50%;
+    border-radius: 10px;
 }
+
+.shadow{
+    box-shadow: 10px 10px 12px 12px gainsboro;
+}
+
+.color{
+    background-color: wheat
+}
+
+Card{
+    background-color: whitesmoke;
+}
+
+.txtcolor{
+    color: red;
+    font-weight: bold;
+}
+
+super{
+    color: red;
+    font-weight: bold;
+}
+
 
