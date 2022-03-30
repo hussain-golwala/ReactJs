@@ -7,9 +7,9 @@ import Header from '../../Header';
 
 function Day12() {
   const [input, setInput] = useState('');
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const handleClick = () => {
-    navigate = setInput('/day2');
+    navigate('/');
   };
   return (
     <>
