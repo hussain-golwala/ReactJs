@@ -5,12 +5,18 @@ import {
   Formik, Form, Field, ErrorMessage,
 } from 'formik';
 import * as yup from 'yup';
-import React from 'react';
+import React, { useState } from 'react';
 import '../../scss/day11.scss';
 import { Button, Card } from 'react-bootstrap';
 import Header from '../../Header';
+import Footer from '../../Footer';
 
 function Day11() {
+  const [user, setUser] = useState('');
+
+  const handleReset = (values) => {
+    setUser(values);
+  };
   const InitialValue = {
     fname: '',
     lname: '',
@@ -19,9 +25,6 @@ function Day11() {
     email: '',
     gender: '',
     department: '',
-    react: '',
-    angular: '',
-    dotnet: '',
     tnc: '',
   };
 
@@ -31,10 +34,11 @@ function Day11() {
     pass: yup.string().required('Password is required'),
     cpass: yup.string().required('Confirm Password is required'),
     email: yup.string().required('Email is required').email('Please enter valid email'),
-    gender: yup.boolean().required('Please select Gender').oneOf([0, 1]),
+    gender: yup.string().required('Gender is required'),
   });
 
   const handleSubmit = (values) => {
+    setUser(values);
     console.log('Submitted form', values);
   };
 
@@ -134,7 +138,7 @@ function Day11() {
               <label className="me-3">
                 <Field
                   type="radio"
-                  value="male"
+                  value="Male"
                   name="gender"
                   className="me-1"
                 />
@@ -144,7 +148,7 @@ function Day11() {
               <label className="me-1">
                 <Field
                   type="radio"
-                  value="female"
+                  value="Female"
                   name="gender"
                   className="me-1"
                 />
@@ -155,26 +159,33 @@ function Day11() {
                 <ErrorMessage name="gender" />
               </p>
 
-              <label className="form-label mt-3">Department:</label>
-              <select className="form-select" name="department">
+              <label className="form-label mt-3">
+                Department:
+                <super>*</super>
+              </label>
+              <select className="form-select">
                 <option value="select" label="--Select--" />
-                <option value="react" label="ReactJs" name="react" />
-                <option value="angular" label="Angular" name="angular" />
-                <option value="dotnet" label=".Net" name="dotnet" />
+                <option value="reactjs" label="ReactJs" name="department" />
+                <option value="angular" label="Angular" name="department" />
+                <option value=".net" label=".Net" name="department" />
               </select>
               <br />
               <label className="mb-3">
                 <Field
                   type="checkbox"
                   name="tnc"
+                  value="Accepted"
                   className="me-2"
                 />
                 I accept Terms & Conditions
               </label>
               <br />
+              <p className="txtcolor">
+                <ErrorMessage name="tnc" />
+              </p>
               <Button className="btn btn-primary" type="submit">Submit</Button>
               {' '}
-              <Button className="btn btn-danger">Reset</Button>
+              <Button className="btn btn-danger" type="reset" onClick={handleReset}>Reset</Button>
               {' '}
 
             </Form>
@@ -188,15 +199,44 @@ function Day11() {
         <div className="container color center shadow mt-5 p-5">
           <Card style={{ width: '50rem' }}>
             <Card.Body>
-              <Card.Title className="text-center mt-2">Display Form Data</Card.Title>
+              <h1 className="text-center mt-3 mb-3">Display Form Data</h1>
               <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
+                <div className="text-center">
+                  <h3>
+                    Firstname:
+                    {user.fname}
+                  </h3>
+                  <h3>
+                    Lastname:
+                    {user.lname}
+                  </h3>
+                  <h3>
+                    Passsword:
+                    {user.pass}
+                  </h3>
+                  <h3>
+                    Confirm Password:
+                    {user.cpass}
+                  </h3>
+                  <h3>
+                    Email:
+                    {user.email}
+                  </h3>
+                  <h3>
+                    Gender:
+                    {user.gender}
+                  </h3>
+                  <h3>
+                    I accept Terms & Conditions:
+                    {user.tnc}
+                  </h3>
+                </div>
               </Card.Text>
             </Card.Body>
           </Card>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
