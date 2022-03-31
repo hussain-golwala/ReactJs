@@ -16,11 +16,13 @@ import ReactJs from './Components/day10react';
 import Day11 from './Pages/day11';
 import Error from './Pages/error page';
 import Day12 from './Pages/day12';
+import Day13 from './Pages/day13';
 
 function AppRouter() {
   return (
     <Routes>
       <Route path="/" element={<Layout />} />
+      <Route path="/home" element={<Layout />} />
       <Route path="/day2" element={<Day2App />} />
       <Route path="/day3" element={<Day3 />} />
       <Route path="/day4" element={<Day4 />} />
@@ -36,6 +38,7 @@ function AppRouter() {
       </Route>
       <Route path="/day11" element={<Day11 />} />
       <Route path="/day12" element={<Day12 />} />
+      <Route path="/day13" element={<Day13 />} />
       <Route path="*" element={<Error />} />
     </Routes>
   );

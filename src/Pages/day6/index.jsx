@@ -75,8 +75,8 @@ class Day6 extends React.Component {
             <div className="col five">{showchild1 && <Day6User1 />}</div>
             <div className="col six">{showchild2 && <Day6User2 />}</div>
           </div>
-          <Footer />
         </div>
+        <Footer />
       </div>
     );
   }
