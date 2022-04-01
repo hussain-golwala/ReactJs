@@ -4,8 +4,8 @@ import '../scss/loader.scss';
 function Loader() {
   return (
     <div className="col-md-12 center">
-      <div className="loader" />
-      <h2>Please wait till fetching the data...</h2>
+      <div className="loader mt-5" />
+      <h2 className="mt-2">Please wait till fetching the data...</h2>
     </div>
   );
 }

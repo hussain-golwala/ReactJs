@@ -1,14 +1,23 @@
-import React from 'react';
-import Loader from '../../Components/day13loader';
-import Header from '../../Header';
+/* eslint-disable react/jsx-props-no-spreading */
+import React, { useState } from 'react';
 
-function Day13() {
-  return (
-    <>
-      <Header />
-      <Loader />
-    </>
-  );
-}
+const isLoadingHOC = (WrappedComponent) => {
+  function HOC(props) {
+    const [isLoading, setIsLoading] = useState(true);
 
-export default Day13;
+    const setIsLoadingState = (isComponentLoading) => {
+      setIsLoading(isComponentLoading);
+    };
+
+    return (
+      <>
+        {isLoading && <div>welcome</div>}
+        <WrappedComponent {...props} setIsLoading={setIsLoadingState} />
+      </>
+    );
+  }
+
+  return HOC;
+};
+
+export default isLoadingHOC;

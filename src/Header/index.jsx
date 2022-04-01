@@ -47,6 +47,9 @@ const Header = () => (
           <NavLink to="/day13" className="nav-link">
             Day13
           </NavLink>
+          <NavLink to="/day14" className="nav-link">
+            Day14
+          </NavLink>
         </Nav>
       </Navbar.Collapse>
     </Container>

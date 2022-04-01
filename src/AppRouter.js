@@ -16,7 +16,9 @@ import ReactJs from './Components/day10react';
 import Day11 from './Pages/day11';
 import Error from './Pages/error page';
 import Day12 from './Pages/day12';
-import Day13 from './Pages/day13';
+// import Day13 from './Pages/day13';
+import Day14 from './Pages/day14';
+import FetchApi from './Pages/day13/fetchapi';
 
 function AppRouter() {
   return (
@@ -38,7 +40,8 @@ function AppRouter() {
       </Route>
       <Route path="/day11" element={<Day11 />} />
       <Route path="/day12" element={<Day12 />} />
-      <Route path="/day13" element={<Day13 />} />
+      <Route path="/day13" element={<FetchApi />} />
+      <Route path="/day14" element={<Day14 />} />
       <Route path="*" element={<Error />} />
     </Routes>
   );
