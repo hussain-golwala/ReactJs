@@ -11,7 +11,7 @@ const isLoadingHOC = (WrappedComponent) => {
 
     return (
       <>
-        {isLoading && <div>welcome</div>}
+        {isLoading}
         <WrappedComponent {...props} setIsLoading={setIsLoadingState} />
       </>
     );

@@ -24,7 +24,7 @@ function FetchApi() {
   return (
     <div>
       <Header />
-      {isLoading && <p><Loader /></p>}
+      {isLoading && <Loader />}
       {users.length > 0 && (
         <div className="container center">
           <h1> User Details </h1>
