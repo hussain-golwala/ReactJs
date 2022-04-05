@@ -3,7 +3,6 @@ import { Form, Button } from 'react-bootstrap';
 import '../../scss/day12.scss';
 import { useNavigate } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
-import Header from '../../Header';
 
 function Day12() {
   const [input, setInput] = useState('');
@@ -75,7 +74,6 @@ function Day12() {
 
   return (
     <>
-      <Header />
       <div className="col-md-12">
         <h2 className="text-center mt-3 mb-3">Day-12 Redirect Form</h2>
       </div>

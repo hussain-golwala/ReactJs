@@ -1,8 +1,6 @@
 /* eslint-disable no-shadow */
 /* eslint-disable lines-between-class-members */
 import React from 'react';
-import Footer from '../../Footer';
-import Header from '../../Header';
 
 class Day4 extends React.Component {
   constructor(props) {
@@ -36,27 +34,23 @@ class Day4 extends React.Component {
     }
 
     return (
-      <>
-        <Header />
-        <div className="App">
-          <h1> User Details </h1>
-          {' '}
-          {user.map((user) => (
-            <ol key={user.id}>
-              First-Name:
-              {' '}
-              {user.first_name}
-              , Last-Name:
-              {' '}
-              {user.last_name}
-              , Email:
-              {' '}
-              {user.email}
-            </ol>
-          ))}
-        </div>
-        <Footer />
-      </>
+      <div className="App">
+        <h1> User Details </h1>
+        {' '}
+        {user.map((user) => (
+          <ol key={user.id}>
+            First-Name:
+            {' '}
+            {user.first_name}
+            , Last-Name:
+            {' '}
+            {user.last_name}
+            , Email:
+            {' '}
+            {user.email}
+          </ol>
+        ))}
+      </div>
     );
   }
 }

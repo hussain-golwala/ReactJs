@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import isLoadingHOC from '.';
 import Loader from '../../Components/day13loader';
-import Header from '../../Header';
 
 function FetchApi() {
   const [users, setUsers] = useState([]);
@@ -23,7 +22,6 @@ function FetchApi() {
 
   return (
     <div>
-      <Header />
       {isLoading && <Loader />}
       {users.length > 0 && (
         <div className="container center">

@@ -5,8 +5,6 @@ import { Button } from 'react-bootstrap';
 import React from 'react';
 import Day6User1 from '../../Components/day6User1';
 import Day6User2 from '../../Components/day6User2';
-import Header from '../../Header';
-import Footer from '../../Footer';
 
 class Day6 extends React.Component {
   constructor() {
@@ -36,7 +34,6 @@ class Day6 extends React.Component {
     const { showchild1, showchild2 } = this.state;
     return (
       <div>
-        <Header />
         <div className="container" style={{ marginTop: '10px' }}>
           <div className="row one">
             <div className="col one">
@@ -76,7 +73,6 @@ class Day6 extends React.Component {
             <div className="col six">{showchild2 && <Day6User2 />}</div>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }

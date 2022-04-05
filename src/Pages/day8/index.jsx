@@ -3,8 +3,6 @@
 /* eslint-disable linebreak-style */
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
-import Footer from '../../Footer';
-import Header from '../../Header';
 
 function Day8() {
   const [count, setCount] = useState(0);
@@ -20,7 +18,6 @@ function Day8() {
 
   return (
     <>
-      <Header />
       <h1>
         Counter:
         {count}
@@ -36,7 +33,6 @@ function Day8() {
       <Button variant="danger" onClick={() => setCount(0)}>
         Reset
       </Button>
-      <Footer />
     </>
   );
 }

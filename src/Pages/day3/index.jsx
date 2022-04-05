@@ -3,8 +3,6 @@
 /* eslint-disable react/sort-comp */
 import React from 'react';
 import Day3Child from '../../Components/day3Child';
-import Footer from '../../Footer';
-import Header from '../../Header';
 
 class Day3 extends React.PureComponent {
   constructor(props) {
@@ -27,7 +25,6 @@ class Day3 extends React.PureComponent {
   render() {
     return (
       <>
-        <Header />
         <h1>
           Count:
           {' '}
@@ -38,7 +35,6 @@ class Day3 extends React.PureComponent {
           name="Hussain Golwala"
           count={this.state.count}
         />
-        <Footer />
       </>
     );
   }

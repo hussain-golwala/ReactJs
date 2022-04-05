@@ -8,8 +8,6 @@ import * as yup from 'yup';
 import React, { useState } from 'react';
 import '../../scss/day11.scss';
 import { Button, Card } from 'react-bootstrap';
-import Header from '../../Header';
-import Footer from '../../Footer';
 
 function Day11() {
   const [user, setUser] = useState('');
@@ -44,7 +42,6 @@ function Day11() {
 
   return (
     <>
-      <Header />
       <div className="col-md-12 shadow">
         <h2 className="text-center mt-3 mb-3">User Form Validation</h2>
       </div>
@@ -236,7 +233,6 @@ function Day11() {
           </Card>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

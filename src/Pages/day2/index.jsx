@@ -2,8 +2,6 @@
 /* eslint-disable import/no-named-as-default */
 import React from 'react';
 import User from '../../Components/day2user';
-import Footer from '../../Footer';
-import Header from '../../Header';
 
 class Day2App extends React.Component {
   constructor() {
@@ -25,11 +23,7 @@ class Day2App extends React.Component {
 
   render() {
     return (
-      <>
-        <Header />
-        <User data={this.state.data} />
-        <Footer />
-      </>
+      <User data={this.state.data} />
     );
   }
 }
