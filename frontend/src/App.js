@@ -1,8 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import AppRouter from './AppRouter';
-import Footer from './Footer';
-import Header from './Header';
+import Footer from './layout/Footer';
+import Header from './layout/Header';
 import store from './Redux/store';
 
 function App() {

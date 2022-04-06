@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-alert */
 /* eslint-disable react/sort-comp */
 /* eslint-disable react/forbid-prop-types */
@@ -9,6 +10,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Button } from 'react-bootstrap';
+import '../../scss/day14.scss';
 import {
   getEmployee, addEmployee, editEmployee, deleteEmployee,
 } from '../../Redux/actions';
@@ -96,45 +99,45 @@ class Day14 extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="container center">
         <header className="App-header">
-          <h1 className="App-title">CRUD opeartions for Employee Module</h1>
+          <h2 className="App-title mt-3">CRUD operation using React Redux</h2>
         </header>
         <p className="App-intro">
           <div className="leftsection">
-            Employee Name :
+            <label className="form-control">Employee Name :</label>
             {' '}
-            <input onChange={this.handleNameChange} value={this.state.employeeName} type="text" placeholder="Employee Name" />
+            <input className="form-control" onChange={this.handleNameChange} value={this.state.employeeName} type="text" placeholder="Employee Name" />
             {' '}
             <br />
-            Employee Department :
+            <label className="form-control">Employee Department :</label>
             {' '}
-            <input onChange={this.handleDepartmentChange} value={this.state.employeeDepartment} type="text" placeholder="Employee Department" />
+            <input className="form-control" onChange={this.handleDepartmentChange} value={this.state.employeeDepartment} type="text" placeholder="Employee Department" />
             <br />
-            {this.state.id ? <button onClick={this.submitData}>UPDATE</button> : <button onClick={this.submitData}>ADD</button>}
+            {this.state.id ? <Button className="btn btn-primary" onClick={this.submitData}>UPDATE</Button> : <Button className="btn btn-primary" onClick={this.submitData}>ADD</Button>}
             {' '}
-            <button onClick={this.clearData}>CLEAR</button>
+            <Button className="btn btn-danger" onClick={this.clearData}>CLEAR</Button>
           </div>
-          <div className="rightsection">
+          <div className="rightsection mt-5" style={{ width: '400px' }}>
             <table>
-              <thead>
+              <thead style={{ backgroundColor: 'black', color: 'white' }}>
                 <tr>
                   <th>ID</th>
-                  <th>Name</th>
+                  <th className="text-center">Name</th>
                   <th>Depatment Name</th>
-                  <th>Action(s)</th>
+                  <th className="text-center">Action(s)</th>
                 </tr>
               </thead>
               <tbody>
                 {this.props.employees && this.props.employees.map((data, index) => (
                   <tr key={(index + 1)}>
-                    <td>{(index + 1)}</td>
-                    <td>{data.employeeName}</td>
-                    <td>{data.employeeDepartment}</td>
+                    <td className="text-center">{(index + 1)}</td>
+                    <td className="text-center">{data.employeeName}</td>
+                    <td className="text-center">{data.employeeDepartment}</td>
                     <td>
-                      <button onClick={() => this.editDetails(data)}>EDIT</button>
+                      <Button className="btn btn-primary" onClick={() => this.editDetails(data)}>EDIT</Button>
                       {' '}
-                      <button onClick={() => this.deleteEmployee(data.id)}>DELETE</button>
+                      <Button className="btn btn-danger" onClick={() => this.deleteEmployee(data.id)}>DELETE</Button>
                       {' '}
                     </td>
                   </tr>

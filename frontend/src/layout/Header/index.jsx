@@ -2,7 +2,7 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import '../scss/header.scss';
+import '../../scss/header.scss';
 
 const Header = () => (
   <Navbar bg="primary" expand="lg" variant="dark">
@@ -49,6 +49,9 @@ const Header = () => (
           </NavLink>
           <NavLink to="/day14" className="nav-link">
             Day14
+          </NavLink>
+          <NavLink to="/day15" className="nav-link">
+            Day15
           </NavLink>
         </Nav>
       </Navbar.Collapse>
