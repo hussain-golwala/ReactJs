@@ -19,6 +19,7 @@ import Day12 from './Pages/day12';
 // import Day13 from './Pages/day13';
 import Day14 from './Pages/day14';
 import FetchApi from './Pages/day13/fetchapi';
+import Day15 from './Pages/day15';
 
 function AppRouter() {
   return (
@@ -42,6 +43,7 @@ function AppRouter() {
       <Route path="/day12" element={<Day12 />} />
       <Route path="/day13" element={<FetchApi />} />
       <Route path="/day14" element={<Day14 />} />
+      <Route path="/day15" element={<Day15 />} />
       <Route path="*" element={<Error />} />
     </Routes>
   );

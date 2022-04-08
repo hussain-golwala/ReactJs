@@ -1,60 +1,76 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable no-alert */
-/* eslint-disable react/sort-comp */
-/* eslint-disable react/forbid-prop-types */
-/* eslint-disable react/static-property-placement */
-/* eslint-disable max-len */
-/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/button-has-type */
+/* eslint-disable no-debugger */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable no-alert */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Form from 'react-bootstrap/Form';
+import Buttons from '@material-ui/core/Button';
+import Button from 'react-bootstrap/Button';
+import { withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import { connect } from 'react-redux';
-import { Button } from 'react-bootstrap';
-import '../../scss/day14.scss';
 import {
-  getEmployee, addEmployee, editEmployee, deleteEmployee,
-} from '../../Redux/actions';
+  getUsers, addUsers, editUsers, deleteUsers,
+} from '../../Redux/Action/actionfile';
+
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);
 
 class Day14 extends Component {
   constructor(props) {
     super(props);
     this.state = {
       id: 0,
-      employeeName: '',
-      employeeDepartment: '',
+      name: '',
+      department: '',
     };
   }
 
-  static propTypes = {
-    employees: PropTypes.array.isRequired,
-    getEmployee: PropTypes.func.isRequired,
-    addEmployee: PropTypes.func.isRequired,
-    editEmployee: PropTypes.func.isRequired,
-    deleteEmployee: PropTypes.func.isRequired,
-  };
-
   componentDidMount() {
-    this.props.getEmployee();
+    this.props.getUsers();
   }
 
   submitData = () => {
-    if (this.state.employeeName && this.state.employeeDepartment && !this.state.id) {
+    if (this.state.name && this.state.department && !this.state.id) {
       const newEmployee = {
         id: Math.floor(Math.random() * (999 - 100 + 1) + 100),
-        employeeName: this.state.employeeName,
-        employeeDepartment: this.state.employeeDepartment,
+        name: this.state.name,
+        department: this.state.department,
       };
 
-      this.props.addEmployee(newEmployee);
-    } else if (this.state.employeeName && this.state.employeeDepartment && this.state.id) {
+      this.props.addUsers(newEmployee);
+    } else if (this.state.name && this.state.department && this.state.id) {
       const updatedDetails = {
         id: this.state.id,
-        employeeName: this.state.employeeName,
-        employeeDepartment: this.state.employeeDepartment,
+        name: this.state.name,
+        department: this.state.department,
       };
 
-      this.props.editEmployee(updatedDetails);
+      this.props.editUsers(updatedDetails);
     } else {
       alert('Enter Employee Details.');
     }
@@ -65,96 +81,154 @@ class Day14 extends Component {
   editDetails = (data) => {
     this.setState({
       id: data.id,
-      employeeName: data.employeeName,
-      employeeDepartment: data.employeeDepartment,
+      name: data.name,
+      department: data.department,
     });
   };
 
-  deleteEmployee = (id) => {
+  deleteUsers = (id) => {
     this.clearData();
     if (window.confirm('Are you sure?')) {
-      this.props.deleteEmployee(id);
+      this.props.deleteUsers(id);
     }
   };
 
   handleNameChange = (e) => {
     this.setState({
-      employeeName: e.target.value,
+      name: e.target.value,
     });
   };
 
   handleDepartmentChange = (e) => {
     this.setState({
-      employeeDepartment: e.target.value,
+      department: e.target.value,
     });
   };
 
   clearData = () => {
     this.setState({
       id: 0,
-      employeeName: '',
-      employeeDepartment: '',
+      name: '',
+      department: '',
     });
   };
 
   render() {
     return (
-      <div className="container center">
-        <header className="App-header">
-          <h2 className="App-title mt-3">CRUD operation using React Redux</h2>
-        </header>
-        <p className="App-intro">
-          <div className="leftsection">
-            <label className="form-control">Employee Name :</label>
-            {' '}
-            <input className="form-control" onChange={this.handleNameChange} value={this.state.employeeName} type="text" placeholder="Employee Name" />
-            {' '}
-            <br />
-            <label className="form-control">Employee Department :</label>
-            {' '}
-            <input className="form-control" onChange={this.handleDepartmentChange} value={this.state.employeeDepartment} type="text" placeholder="Employee Department" />
-            <br />
-            {this.state.id ? <Button className="btn btn-primary" onClick={this.submitData}>UPDATE</Button> : <Button className="btn btn-primary" onClick={this.submitData}>ADD</Button>}
-            {' '}
-            <Button className="btn btn-danger" onClick={this.clearData}>CLEAR</Button>
-          </div>
-          <div className="rightsection mt-5" style={{ width: '400px' }}>
-            <table>
-              <thead style={{ backgroundColor: 'black', color: 'white' }}>
-                <tr>
-                  <th>ID</th>
-                  <th className="text-center">Name</th>
-                  <th>Depatment Name</th>
-                  <th className="text-center">Action(s)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.props.employees && this.props.employees.map((data, index) => (
-                  <tr key={(index + 1)}>
-                    <td className="text-center">{(index + 1)}</td>
-                    <td className="text-center">{data.employeeName}</td>
-                    <td className="text-center">{data.employeeDepartment}</td>
-                    <td>
-                      <Button className="btn btn-primary" onClick={() => this.editDetails(data)}>EDIT</Button>
+      <div className="container mt-5">
+        <h1 className="App-title mb-5">CRUD Operations Using React Redux</h1>
+        <Form className="leftsection mb-5">
+          Name :
+          {' '}
+          <input
+            onChange={this.handleNameChange}
+            value={this.state.name}
+            type="text"
+            placeholder="Name"
+          />
+          {' '}
+          <br />
+          <br />
+          Department :
+          {' '}
+          <input
+            onChange={this.handleDepartmentChange}
+            value={this.state.department}
+            type="text"
+            placeholder="Department"
+          />
+          <br />
+          <br />
+          {this.state.id ? (
+            <Button
+              variant="primary"
+              type="button"
+              onClick={this.submitData}
+              style={{ marginRight: '10px' }}
+            >
+              UPDATE
+            </Button>
+          ) : (
+            <Buttons
+              variant="contained"
+              color="primary"
+              type="button"
+              onClick={this.submitData}
+              style={{ marginRight: '10px' }}
+            >
+              ADD
+            </Buttons>
+          )}
+          {' '}
+          <Button type="button" onClick={this.clearData} variant="danger">
+            CLEAR
+          </Button>
+        </Form>
+        <TableContainer component={Paper}>
+          <Table aria-label="customized table" style={{ Width: '500px' }}>
+            <TableHead>
+              <TableRow>
+                <StyledTableCell align="center">ID</StyledTableCell>
+                <StyledTableCell align="center">Name</StyledTableCell>
+                <StyledTableCell align="center">Department Name</StyledTableCell>
+                <StyledTableCell align="center">Action</StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {this.props.users
+                && this.props.users.map((data, index) => (
+                  <StyledTableRow key={data.id}>
+                    <StyledTableCell component="th" scope="row" align="center">
+                      {index + 1}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">{data.name}</StyledTableCell>
+                    <StyledTableCell align="center">{data.department}</StyledTableCell>
+                    <StyledTableCell align="center">
+                      <Button
+                        variant="primary"
+                        type="button"
+                        onClick={() => this.editDetails(data)}
+                        style={{ marginRight: '20px' }}
+                      >
+                        <EditIcon />
+                        {' '}
+                        Edit
+                      </Button>
                       {' '}
-                      <Button className="btn btn-danger" onClick={() => this.deleteEmployee(data.id)}>DELETE</Button>
+                      <Button
+                        variant="danger"
+                        type="button"
+                        onClick={() => this.deleteUsers(data.id)}
+                      >
+                        <DeleteIcon />
+                        {' '}
+                        Delete
+                      </Button>
                       {' '}
-                    </td>
-                  </tr>
+                    </StyledTableCell>
+                  </StyledTableRow>
                 ))}
-              </tbody>
-            </table>
-          </div>
-        </p>
+            </TableBody>
+          </Table>
+        </TableContainer>
       </div>
     );
   }
 }
-
+Day14.propTypes = {
+  users: PropTypes.array.isRequired,
+  getUsers: PropTypes.func.isRequired,
+  addUsers: PropTypes.func.isRequired,
+  editUsers: PropTypes.func.isRequired,
+  deleteUsers: PropTypes.func.isRequired,
+};
 const mapStateToProps = (state) => ({
-  employees: state.employees,
+  users: state.users.items,
 });
 
 export default connect(mapStateToProps, {
-  getEmployee, addEmployee, editEmployee, deleteEmployee,
+  getUsers,
+  addUsers,
+  editUsers,
+  deleteUsers,
 })(Day14);
